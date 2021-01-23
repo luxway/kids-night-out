@@ -1,8 +1,8 @@
 import React from 'react'
-import {Nav} from './sections/main'
+import {Nav, Status} from './sections/main'
 import Theme from './Theme'
 import {GlobalStyle} from './GlobalStyles'
-import {Main} from './pages'
+import {Guardian, Main} from './pages'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
 const App = () => {
@@ -11,9 +11,11 @@ const App = () => {
             <Theme>
                 <GlobalStyle />
                 <Nav />
+                <Status />
                 <Router>
                     <Switch>
-                        <Route to="/" component={Main} exact />
+                        <Route path="/" exact component={Main} />
+                        <Route path="/guardian" component={Guardian} exact />
                     </Switch>
                 </Router>
             </Theme>
