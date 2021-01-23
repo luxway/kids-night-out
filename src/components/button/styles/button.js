@@ -8,6 +8,8 @@ export const Inner = styled.button`
     border-radius: 50px;
     opacity: 0.8;
     transition: 0.2s;
+    margin: ${props => props.margin || 0};
+    width: ${props => props.width || '100%'};
   
     a {
       color: inherit;
