@@ -7,7 +7,12 @@ export const Input = styled.input`
     padding: 10px;
 `
 
-export const TextArea = styled.textarea``
+export const TextArea = styled.textarea`
+    min-height: 150px;
+    font-size: 18px;
+    padding: 10px;
+    resize: vertical;
+`
 
 export const RadioButton = styled.input``
 
@@ -18,6 +23,7 @@ export const InputWrapper = styled.div`
 
 export const Label = styled.label`
     text-align: left;
+    margin: 0 0 10px 0;
   
     span {
       color: red;
