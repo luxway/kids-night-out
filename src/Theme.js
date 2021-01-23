@@ -3,7 +3,8 @@ import {ThemeProvider} from 'styled-components'
 
 const theme = {
     colors: {
-        main: '#3EB6CE'
+        main: '#3EB6CE',
+        text: '#393939'
     },
     fonts: {
         main: 'sans-serif'
