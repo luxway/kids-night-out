@@ -24,6 +24,7 @@ export const InputWrapper = styled.div`
 export const Label = styled.label`
     text-align: left;
     margin: 0 0 10px 0;
+    color: ${props => props.theme.colors.text};
   
     span {
       color: red;
