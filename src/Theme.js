@@ -4,7 +4,7 @@ import {ThemeProvider} from 'styled-components'
 const theme = {
     colors: {
         main: '#3EB6CE',
-        text: '#393939'
+        text: '#324B50'
     },
     fonts: {
         main: 'sans-serif'
