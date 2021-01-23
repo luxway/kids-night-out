@@ -4,7 +4,7 @@ import {Navigation} from '../../components'
 const Nav = () => {
     return (
         <Navigation>
-            <p>Kids Night Out - Registration</p>
+            <p>Amazing Animals Inc</p>
         </Navigation>
     )
 }
