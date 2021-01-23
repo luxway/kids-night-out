@@ -7,7 +7,7 @@ Form.Input = ({...restProps}) => <Input {...restProps} />
 
 Form.TextArea = ({children, ...restProps}) => <TextArea {...restProps}>{children}</TextArea>
 
-Form.RadioButton = ({...restProps}) => <RadioButton {...restProps} />
+Form.RadioButton = ({...restProps}) => <RadioButton type="radio" {...restProps} />
 
 Form.Wrapper = ({children, ...restProps}) => <InputWrapper {...restProps}>{children}</InputWrapper>
 
