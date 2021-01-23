@@ -11,7 +11,7 @@ const Main = () => {
                 This form will take about 10 minutes to complete and is sepereated into three parts.
                 Payment will be required at the end of the form so please be ready to complete it all in one sitting.
             </Text>
-            <Button><Link to="/guardian">Register Now!</Link></Button>
+            <Button width="auto"><Link to="/guardian">Register Now!</Link></Button>
         </Container>
     )
 }
