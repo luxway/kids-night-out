@@ -2,11 +2,11 @@ import React, {useState} from 'react'
 import {Nav, Status} from './sections/main'
 import Theme from './Theme'
 import {GlobalStyle} from './GlobalStyles'
-import {AddChild, ChildList, EmergencyContact, Guardian, Main} from './pages'
+import {AddChild, ChildList, EmergencyContact, Guardian} from './pages'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
-const GuardianContext = React.createContext(null)
-const EmergencyContext = React.createContext(null)
+export const GuardianContext = React.createContext(null)
+export const EmergencyContext = React.createContext(null)
 export const ChildContext = React.createContext(null)
 
 const App = () => {
