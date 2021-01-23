@@ -2,8 +2,12 @@ import React, {useState} from 'react'
 import {Nav, Status} from './sections/main'
 import Theme from './Theme'
 import {GlobalStyle} from './GlobalStyles'
-import {ChildList, EmergencyContact, Guardian, Main} from './pages'
+import {AddChild, ChildList, EmergencyContact, Guardian, Main} from './pages'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
+
+const GuardianContext = React.createContext(null)
+const EmergencyContext = React.createContext(null)
+export const ChildContext = React.createContext(null)
 
 const App = () => {
     const [guardian, setGuardian] = useState({})
@@ -15,14 +19,21 @@ const App = () => {
             <Theme>
                 <GlobalStyle />
                 <Nav />
-                <Status />
-                <Router>
-                    <Switch>
-                        <Route path="/" component={Guardian} exact />
-                        <Route path="/emergency-contact" component={EmergencyContact} exact />
-                        <Route path="/child" component={ChildList} exact />
-                    </Switch>
-                </Router>
+                <GuardianContext.Provider value={[guardian, setGuardian]}>
+                    <EmergencyContext.Provider value={[emergency, setEmergency]}>
+                        <ChildContext.Provider value={[child, setChild]}>
+                            <Status />
+                            <Router>
+                                <Switch>
+                                    <Route path="/" component={Guardian} exact />
+                                    <Route path="/emergency-contact" component={EmergencyContact} exact />
+                                    <Route path="/child" component={ChildList} exact />
+                                    <Route path="/add-child" component={AddChild} exact />
+                                </Switch>
+                            </Router>
+                        </ChildContext.Provider>
+                    </EmergencyContext.Provider>
+                </GuardianContext.Provider>
             </Theme>
         </>
     )
