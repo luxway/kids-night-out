@@ -8,5 +8,4 @@ export const Inner = styled.nav`
     color: #FFF;
     line-height: 100px;
     font-size: 40px;
-  margin-bottom: 100px;
 `
