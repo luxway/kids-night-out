@@ -56,9 +56,11 @@ const GuardianForm = () => {
     return (
         <>
             <Form>
-                {errors.map(error => (
-                    <p>{error}</p>
-                ))}
+                {errors.length > 0 ? (
+                    <Form.Errors>
+                        {errors[0]}
+                    </Form.Errors>
+                ) : null}
                 <Form.Wrapper>
                     <Form.Group>
                         <Form.Label>First Name <span>*</span></Form.Label>
@@ -93,24 +95,24 @@ const GuardianForm = () => {
 
                     <Form.Group>
                         <Form.Label>Zip Code <span>*</span></Form.Label>
-                        <Form.Input name="zip" onChange={handleChange} value={guardian.zip || ''} />
+                        <Form.Input name="zip" type="number" onChange={handleChange} value={guardian.zip || ''} />
                     </Form.Group>
                 </Form.Wrapper>
 
                 <Form.Group>
                     <Form.Label>Email <span>*</span></Form.Label>
-                    <Form.Input name="email" onChange={handleChange} value={guardian.email || ''} />
+                    <Form.Input name="email" type="email" onChange={handleChange} value={guardian.email || ''} />
                 </Form.Group>
 
                 <Form.Wrapper>
                     <Form.Group>
                         <Form.Label>Phone <span>*</span></Form.Label>
-                        <Form.Input name="phone" onChange={handleChange} value={guardian.phone || ''} />
+                        <Form.Input name="phone" type="tel" onChange={handleChange} value={guardian.phone || ''} />
                     </Form.Group>
 
                     <Form.Group>
                         <Form.Label>Alt Phone</Form.Label>
-                        <Form.Input name="alt_phone" onChange={handleChange} value={guardian.alt_phone || ''} />
+                        <Form.Input name="alt_phone" type="tel" onChange={handleChange} value={guardian.alt_phone || ''} />
                     </Form.Group>
                 </Form.Wrapper>
             </Form>
