@@ -1,24 +1,21 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {List} from '../../components'
+import {ChildContext} from '../../App'
 
 const ChildrenList = () => {
+    const [child] = useContext(ChildContext)
+
     return (
         <List>
-            <List.Item>
-                <List.Icon>NP</List.Icon>
-                <div>
-                    <List.Name>Nico Plyley</List.Name>
-                    <List.Age>24 years old</List.Age>
-                </div>
-            </List.Item>
-
-            <List.Item>
-                <List.Icon>BG</List.Icon>
-                <div>
-                    <List.Name>Blakely Graddy</List.Name>
-                    <List.Age>25 years old</List.Age>
-                </div>
-            </List.Item>
+            {child.map(data => (
+                <List.Item>
+                    <List.Icon>{data.first_name.charAt(0) + data.last_name.charAt(0)}</List.Icon>
+                    <div>
+                    <List.Name>{data.first_name} {data.last_name}</List.Name>
+                    <List.Age>{data.age} years old</List.Age>
+                    </div>
+                </List.Item>
+            ))}
         </List>
     )
 }
