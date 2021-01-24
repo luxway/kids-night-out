@@ -40,9 +40,9 @@ const Status = () => {
                     <Breadcrumbs.Line />
                 </Breadcrumbs.Item>
 
-                <Breadcrumbs.Item className="line">
+                <Breadcrumbs.Item complete={valid.success} className="line">
                     <Breadcrumbs.Group>
-                        <Breadcrumbs.Icon />
+                        <Breadcrumbs.Icon complete={valid.success} />
                         <Breadcrumbs.Info>
                             Payment
                         </Breadcrumbs.Info>
@@ -50,9 +50,9 @@ const Status = () => {
                     <Breadcrumbs.Line />
                 </Breadcrumbs.Item>
 
-                    <Breadcrumbs.Item>
+                    <Breadcrumbs.Item complete={valid.success}>
                         <Breadcrumbs.Group>
-                            <Breadcrumbs.Icon />
+                            <Breadcrumbs.Icon complete={valid.success} />
                             <Breadcrumbs.Info>
                                 Success
                             </Breadcrumbs.Info>
