@@ -6,7 +6,7 @@ import {ChildrenList} from '../sections/main'
 
 const ChildList = () => {
     const [child] = useContext(ChildContext)
-    const childRegistered = child.length < 1
+    const childRegistered = child.length > 0
     const history = useHistory()
 
     const handleAddClick = () => {
