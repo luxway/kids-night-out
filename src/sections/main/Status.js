@@ -1,9 +1,10 @@
 import React, {useContext} from 'react'
 import {Breadcrumbs, Container} from '../../components'
-import {ValidContext} from '../../App'
+import {ValidContext, ChildContext} from '../../App'
 
 const Status = () => {
     const [valid] = useContext(ValidContext)
+    const [child] = useContext(ChildContext)
 
     return (
         <Container>
@@ -29,9 +30,9 @@ const Status = () => {
                     <Breadcrumbs.Line />
                 </Breadcrumbs.Item>
 
-                <Breadcrumbs.Item className="line">
+                <Breadcrumbs.Item complete={child.length > 0} className="line">
                     <Breadcrumbs.Group>
-                        <Breadcrumbs.Icon />
+                        <Breadcrumbs.Icon complete={child.length > 0} />
                         <Breadcrumbs.Info>
                             Child Info
                         </Breadcrumbs.Info>
