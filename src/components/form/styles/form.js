@@ -44,3 +44,11 @@ export const Select = styled.select`
 `
 
 export const Option = styled.option``
+
+export const Errors = styled.div`
+    background: red;
+    color: #FFF;
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px 0;
+`
