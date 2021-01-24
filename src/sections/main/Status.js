@@ -1,14 +1,17 @@
-import React from 'react'
+import React, {useContext} from 'react'
 import {Breadcrumbs, Container} from '../../components'
+import {ValidContext} from '../../App'
 
 const Status = () => {
+    const [valid] = useContext(ValidContext)
+
     return (
         <Container>
             <Breadcrumbs>
 
-                <Breadcrumbs.Item className="line">
+                <Breadcrumbs.Item complete={valid.guardian} className="line">
                     <Breadcrumbs.Group>
-                        <Breadcrumbs.Icon />
+                        <Breadcrumbs.Icon complete={valid.guardian} />
                         <Breadcrumbs.Info>
                             Guardian Info
                         </Breadcrumbs.Info>
