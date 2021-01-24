@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import {Nav, Status} from './sections/main'
 import Theme from './Theme'
 import {GlobalStyle} from './GlobalStyles'
@@ -16,7 +16,19 @@ const App = () => {
     const [child, setChild] = useState([])
     const [valid, setValid] = useState([])
 
+    const handleUnload = e => {
+        e.preventDefault()
+        e.returnValue = ''
+    }
+
+    useEffect(() => {
+        window.addEventListener('beforeunload', handleUnload)
+
+        return () => window.removeEventListener('beforeunload', handleUnload)
+    })
+
     return (
+
         <>
             <Theme>
                 <GlobalStyle />
