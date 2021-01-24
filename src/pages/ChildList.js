@@ -1,13 +1,26 @@
-import React, {useContext} from 'react'
+import React, {useContext, useEffect} from 'react'
 import {Button, Container, Text, Title} from '../components'
-import {ChildContext} from '../App'
+import {ChildContext, ValidContext} from '../App'
 import {useHistory} from 'react-router-dom'
 import {ChildrenList} from '../sections/main'
 
 const ChildList = () => {
+    const [valid] = useContext(ValidContext)
     const [child] = useContext(ChildContext)
     const childRegistered = child.length > 0
     const history = useHistory()
+
+    useEffect(() => {
+
+        if (!valid.guardian) {
+            history.push('/')
+        }
+
+        if (!valid.emergency) {
+            history.push('/emergency-contact')
+        }
+
+    }, [history, valid.guardian, valid.emergency])
 
     const handleAddClick = () => {
         history.push('/add-child')
