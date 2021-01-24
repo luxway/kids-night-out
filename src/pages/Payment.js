@@ -17,7 +17,7 @@ const Payment = () => {
     }, [child])
 
     const client = {
-        sandbox: process.env.PAYPAL_SANDBOX
+        sandbox: process.env.REACT_APP_PAYPAL_SANDBOX
     }
 
     const onSuccess = () => {
