@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 import {Nav, Status} from './sections/main'
 import Theme from './Theme'
 import {GlobalStyle} from './GlobalStyles'
-import {AddChild, ChildList, EmergencyContact, Guardian} from './pages'
+import {AddChild, ChildList, EmergencyContact, Guardian, Payment, Success} from './pages'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
 export const GuardianContext = React.createContext(null)
@@ -44,6 +44,8 @@ const App = () => {
                                         <Route path="/emergency-contact" component={EmergencyContact} exact />
                                         <Route path="/child" component={ChildList} exact />
                                         <Route path="/add-child" component={AddChild} exact />
+                                        <Route path="/payment" component={Payment} exact />
+                                        <Route path="/success" component={Success} exact />
                                     </Switch>
                                 </Router>
                             </ValidContext.Provider>
