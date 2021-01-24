@@ -8,11 +8,13 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 export const GuardianContext = React.createContext(null)
 export const EmergencyContext = React.createContext(null)
 export const ChildContext = React.createContext(null)
+export const ValidContext = React.createContext(null)
 
 const App = () => {
-    const [guardian, setGuardian] = useState({})
+    const [guardian, setGuardian] = useState({state: 'Florida'})
     const [emergency, setEmergency] = useState({})
     const [child, setChild] = useState([])
+    const [valid, setValid] = useState([])
 
     return (
         <>
@@ -22,15 +24,17 @@ const App = () => {
                 <GuardianContext.Provider value={[guardian, setGuardian]}>
                     <EmergencyContext.Provider value={[emergency, setEmergency]}>
                         <ChildContext.Provider value={[child, setChild]}>
+                            <ValidContext.Provider value={[valid, setValid]}>
                             <Status />
-                            <Router>
-                                <Switch>
-                                    <Route path="/" component={Guardian} exact />
-                                    <Route path="/emergency-contact" component={EmergencyContact} exact />
-                                    <Route path="/child" component={ChildList} exact />
-                                    <Route path="/add-child" component={AddChild} exact />
-                                </Switch>
-                            </Router>
+                                <Router>
+                                    <Switch>
+                                        <Route path="/" component={Guardian} exact />
+                                        <Route path="/emergency-contact" component={EmergencyContact} exact />
+                                        <Route path="/child" component={ChildList} exact />
+                                        <Route path="/add-child" component={AddChild} exact />
+                                    </Switch>
+                                </Router>
+                            </ValidContext.Provider>
                         </ChildContext.Provider>
                     </EmergencyContext.Provider>
                 </GuardianContext.Provider>
