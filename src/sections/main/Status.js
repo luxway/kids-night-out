@@ -19,9 +19,9 @@ const Status = () => {
                     <Breadcrumbs.Line />
                 </Breadcrumbs.Item>
 
-                <Breadcrumbs.Item className="line">
+                <Breadcrumbs.Item complete={valid.emergency} className="line">
                     <Breadcrumbs.Group>
-                        <Breadcrumbs.Icon />
+                        <Breadcrumbs.Icon complete={valid.emergency} />
                         <Breadcrumbs.Info>
                             Emergency Contact
                         </Breadcrumbs.Info>
