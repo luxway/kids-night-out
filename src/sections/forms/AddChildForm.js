@@ -18,14 +18,14 @@ const AddChildForm = () => {
                 <Form.Group>
                     <Form.Label>Age <span>*</span></Form.Label>
                     <Form.Select>
-                        <Form.Option disabled>Select One</Form.Option>
-                        <Form.Option>6</Form.Option>
-                        <Form.Option>7</Form.Option>
-                        <Form.Option>8</Form.Option>
-                        <Form.Option>9</Form.Option>
-                        <Form.Option>10</Form.Option>
-                        <Form.Option>11</Form.Option>
-                        <Form.Option>12</Form.Option>
+                        <Form.Option defaultValue hidden>Select One</Form.Option>
+                        <Form.Option value="6">6</Form.Option>
+                        <Form.Option value="7">7</Form.Option>
+                        <Form.Option value="8">8</Form.Option>
+                        <Form.Option value="9">9</Form.Option>
+                        <Form.Option value="10">10</Form.Option>
+                        <Form.Option value="11">11</Form.Option>
+                        <Form.Option value="12">12</Form.Option>
                     </Form.Select>
                 </Form.Group>
             </Form.Wrapper>
