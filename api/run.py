@@ -16,3 +16,10 @@ def index():
     data = request.json
     form.handle_data(data['data'])
     return {'message': 'success'}, 200
+
+
+@app.route('/api/paid', methods=['POST'])
+def paid():
+    data = request.json
+    form.update_paid(data['token'])
+    return {'message': 'success'}, 200
