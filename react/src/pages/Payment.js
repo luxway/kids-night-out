@@ -20,7 +20,7 @@ const Payment = () => {
     const env = 'sandbox'
     const currency = 'USD'
     const history = useHistory()
-    const api = 'http://localhost:5000/api'
+    const api = '/api'
 
     useEffect(() => {
         setData(

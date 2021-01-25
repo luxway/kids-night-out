@@ -7,7 +7,7 @@ import {TokenContext} from '../App'
 const UpdateError = () => {
     const [token] = useContext(TokenContext)
     const history = useHistory()
-    const api = 'http://localhost:5000/api'
+    const api = '/api'
 
     const handleClick = () => {
         axios.post(api + '/paid', {
