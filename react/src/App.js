@@ -3,7 +3,7 @@ import uuid from 'react-uuid'
 import {Nav, Status} from './sections/main'
 import Theme from './Theme'
 import {GlobalStyle} from './GlobalStyles'
-import {AddChild, ChildList, EmergencyContact, Guardian, Payment, Success, Error} from './pages'
+import {AddChild, ChildList, EmergencyContact, Guardian, Payment, Success, Error, UpdateError} from './pages'
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom'
 
 export const GuardianContext = React.createContext(null)
@@ -55,6 +55,7 @@ const App = () => {
                                                 <Route path="/payment" component={Payment} exact />
                                                 <Route path="/success" component={Success} exact />
                                                 <Route path="/error" component={Error} exact />
+                                                <Route path="/update-error" component={UpdateError} exact />
                                             </Switch>
                                         </Router>
                                     </SavedContext.Provider>
