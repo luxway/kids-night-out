@@ -4,23 +4,34 @@ from models import Guardian, Emergency, Kids
 
 def handle_data(data):
     token = data['token']
+    guardian = data['guardian']
+    emergency = data['emergency']
+    kids = data['kids']
 
     if data['type'] == 'save':
         if not Guardian.query.filter_by(token=token).first():
-            guardian = data['guardian']
-            emergency = data['emergency']
-            kids = data['kids']
-
             save_guardian(guardian, token)
             save_emergency(emergency, token)
 
-            guardian_id = Guardian.query.filter_by(token=token).first().id
-            emergency_id = Emergency.query.filter_by(token=token).first().id
+            guardian_id = find_guardian(token).id
+            emergency_id = find_emergency(token).id
 
             save_kids(kids, token, emergency_id, guardian_id)
 
     if data['type'] == 'update':
-        pass
+        update_guardian(guardian, token)
+        update_emergency(emergency, token)
+
+
+def update_paid(token):
+    data = find_guardian(token)
+    data.paid = True
+    db.session.commit()
+
+
+def find_guardian(token):
+    data = Guardian.query.filter_by(token=token).first()
+    return data
 
 
 def save_guardian(data, token):
@@ -53,6 +64,28 @@ def save_guardian(data, token):
     db.session.commit()
 
 
+def update_guardian(data, token):
+    guardian_data = find_guardian(token)
+
+    guardian_data.first_name = data['first_name']
+    guardian_data.last_name = data['last_name']
+    guardian_data.address = data['address']
+    guardian_data.city = data['city']
+    guardian_data.state = data['state']
+    guardian_data.zip_code = data['zip']
+    guardian_data.email = data['email']
+    guardian_data.phone = data['phone']
+    guardian_data.alt_phone = data.get('alt_phone', None)
+    guardian_data.paid = data['paid']
+
+    db.session.commit()
+
+
+def find_emergency(token):
+    data = Emergency.query.filter_by(token=token).first()
+    return data
+
+
 def save_emergency(data, token):
     first_name = data['first_name']
     last_name = data['last_name']
@@ -69,6 +102,22 @@ def save_emergency(data, token):
 
     db.session.add(emergency_data)
     db.session.commit()
+
+
+def update_emergency(data, token):
+    emergency_data = find_emergency(token)
+
+    emergency_data.first_name = data['first_name']
+    emergency_data.last_name = data['last_name']
+    emergency_data.phone = data['phone']
+    emergency_data.alt_phone = data.get('alt_phone', None)
+
+    db.session.commit()
+
+
+def find_kid(token):
+    data = Kids.query.filter_by(token=token)
+    return data
 
 
 def save_kids(data, token, emergency_id, guardian_id):
