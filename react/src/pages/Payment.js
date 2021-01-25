@@ -3,20 +3,18 @@ import axios from 'axios'
 import PaypalExpressBtn from 'react-paypal-express-checkout'
 import {Container, Title} from '../components'
 import {ChildrenList} from '../sections/main'
-import {ChildContext, TokenContext, ValidContext, GuardianContext, EmergencyContext, SavedContext} from '../App'
+import {ChildContext, TokenContext, GuardianContext, EmergencyContext, SavedContext} from '../App'
 import {useHistory} from 'react-router-dom'
 
 const Payment = () => {
     const [total, setTotal] = useState(0)
     const [child] = useContext(ChildContext)
-    const [valid] = useContext(ValidContext)
     const [guardian] = useContext(GuardianContext)
     const [emergency] = useContext(EmergencyContext)
     const [token] = useContext(TokenContext)
     const [saved, setSaved] = useContext(SavedContext)
 
     const [data, setData] = useState({})
-    const [paid, setPaid] = useState(false)
     const [localSave, setLocalSave] = useState(false)
 
     const env = 'sandbox'
@@ -28,10 +26,10 @@ const Payment = () => {
         setData(
             {
                 token: token,
-                type: 'save',//saved ? 'update' : 'save',
+                type: saved ? 'update' : 'save',
                 guardian: {
                     ...guardian,
-                    paid: paid
+                    paid: false
                 },
                 emergency: {
                     ...emergency
@@ -39,7 +37,7 @@ const Payment = () => {
                 kids: child
             }
         )
-    }, [child, emergency, guardian, paid, saved, setData, token])
+    }, [child, emergency, guardian, saved, setData, token])
 
     const handlePost = useCallback(
         () => {
@@ -52,6 +50,7 @@ const Payment = () => {
                 }
             })
             .catch(response => {
+                console.log(response)
                 history.push('/error')
             })
     }, [data, history])
@@ -64,14 +63,24 @@ const Payment = () => {
         }
 
         setTotal (child.length * 30)
-    }, [child, handlePost, data, setSaved, saved])
+    }, [child, handlePost, data, setSaved, saved, localSave])
 
     const client = {
         sandbox: process.env.REACT_APP_PAYPAL_SANDBOX
     }
 
     const onSuccess = () => {
-        history.push('/success')
+        axios.post(api + '/paid', {
+            token: token
+        }).then(response => {
+            if (response.status === 200) {
+                history.push('/success')
+            }
+        })
+            .catch(response => {
+                console.log(response)
+                history.push('/update-error')
+            })
     }
 
     return (
