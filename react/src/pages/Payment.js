@@ -17,7 +17,7 @@ const Payment = () => {
     const [data, setData] = useState({})
     const [localSave, setLocalSave] = useState(false)
 
-    const env = 'sandbox'
+    const env = 'production'
     const currency = 'USD'
     const history = useHistory()
     const api = '/api'
@@ -66,7 +66,8 @@ const Payment = () => {
     }, [child, handlePost, data, setSaved, saved, localSave])
 
     const client = {
-        sandbox: process.env.REACT_APP_PAYPAL_SANDBOX
+        sandbox: process.env.REACT_APP_PAYPAL_SANDBOX,
+        production: process.env.REACT_APP_PAYPAL
     }
 
     const onSuccess = () => {
