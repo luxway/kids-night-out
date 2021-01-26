@@ -1,0 +1,19 @@
+version: '3.7'
+
+services:
+  api:
+    build: ./api
+    container_name: api
+    restart: always
+    expose:
+      - 8080
+  react:
+    build: ./react
+    container_name: react
+    environment:
+      - REACT_APP_PAYPAL_SANDBOX=AQKTPX0XkbEqp-5CX1hmh4-NfexQnvzb0sP3WcmYU70Qz75gDDvkV6PktqN1h30At3ER7h6KFd_X8yfP
+    ports:
+      - "80:80"
+    restart: always
+    depends_on:
+      - api
