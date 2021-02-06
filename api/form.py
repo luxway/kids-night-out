@@ -124,12 +124,14 @@ def save_kids(data, token, emergency_id, guardian_id):
     for kid in data:
         first_name = kid['first_name']
         last_name = kid['last_name']
+        age = kid['age']
         allergies = kid['allergies']
         food = kid['food']
 
         kids_data = Kids(
             first_name=first_name,
             last_name=last_name,
+            age=age,
             allergies=allergies,
             food=food,
             token=token,
